@@ -2,6 +2,8 @@
 
 This is an AXI4 ChaCha20 encrypt/decrypt core that's intended to be used with the Xilinx block designer. It contains a simple Python testbench to verify its correctness.
 
+**This is not suitable for production code.**
+
 The intention is that this is to be used with my FPGA AXI DMA ChaCha20 accelerator project.
 
 
