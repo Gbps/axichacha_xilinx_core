@@ -1,0 +1,7 @@
+*.log
+.vscode/
+.dvt/
+drivers/
+example_designs/
+tb.vcd
+test_files/
