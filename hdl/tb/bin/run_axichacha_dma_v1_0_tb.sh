@@ -19,10 +19,10 @@ function do_test {
     python3 chacha.py $DEF_NUM_BLOCKS $DEF_TDATA_WIDTH $DEF_NUMBIGBLOCKS
 
     # Compile
-    iverilog -DTDATAWIDTH=$DEF_TDATA_WIDTH -DNUMBLOCKS=$DEF_NUM_BLOCKS -DNUMBIGBLOCKS=$DEF_NUMBIGBLOCKS -o ./tb -pfileline=1 -g2005 -y ../ -y ../../src/ ../axichacha_dma_v1_0_tb.v 
+    iverilog -DTDATAWIDTH=$DEF_TDATA_WIDTH -DNUMBLOCKS=$DEF_NUM_BLOCKS -DNUMBIGBLOCKS=$DEF_NUMBIGBLOCKS -o /tmp/tb -pfileline=1 -g2005 -y ../ -y ../../src/ ../axichacha_dma_v1_0_tb.v 
 
     # Run
-    vvp ./tb
+    vvp /tmp/tb
 }
 do_test 16 32 1
 do_test 1 32 1
