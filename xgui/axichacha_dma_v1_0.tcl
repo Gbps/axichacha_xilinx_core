@@ -1,6 +1,9 @@
 # Definitional proc to organize widgets for parameters.
 proc init_gui { IPINST } {
   ipgui::add_param $IPINST -name "Component_Name"
+  ipgui::add_param $IPINST -name "NUMBER_OF_BLOCKS" -widget comboBox
+  ipgui::add_param $IPINST -name "C_M00_AXIS_TDATA_WIDTH"
+  ipgui::add_param $IPINST -name "C_S00_AXIS_TDATA_WIDTH"
 
 }
 
