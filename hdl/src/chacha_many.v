@@ -58,9 +58,6 @@ assign chacha_data_valid = &chacha_data_out_valids;
 // Begins initialization
 reg chacha_init;
 
-// Chacha has been initialized by reset
-reg chacha_initialized;
-
 reg first_reset;
 
 // Current number of blocks that have been processed
@@ -70,13 +67,11 @@ reg [31:0] current_counter;
 always @(posedge clk) begin
     if (~aresetn) begin
         chacha_init <= 0;
-        chacha_initialized <= 0;
         current_counter <= 0;
         first_reset <= 1;
     end else begin
         if (chacha_init) begin
             chacha_init <= 0;
-            chacha_initialized <= 1;
         end
 
         // Next block toggles the init signal on the cores
@@ -87,7 +82,6 @@ always @(posedge clk) begin
                 current_counter <= current_counter + NUMBER_OF_BLOCKS;
             end
 
-            chacha_initialized <= 0;
             chacha_init <= 1;
         end
     end

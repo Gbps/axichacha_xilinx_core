@@ -55,7 +55,10 @@ module axichacha_dma_v1_0 #
 		output wire [C_S00_AXI_DATA_WIDTH-1 : 0] s00_axi_rdata,
 		output wire [1 : 0] s00_axi_rresp,
 		output wire  s00_axi_rvalid,
-		input wire  s00_axi_rready
+		input wire  s00_axi_rready,
+
+		// For debugging
+		output wire [1 : 0] dbg_state
 	);
 
 
@@ -114,10 +117,14 @@ module axichacha_dma_v1_0 #
 
 // Prepare to crypt the next block when both of the sides are drained
 	assign next_block = current_state == NEXT_BLOCK;
+	
+// For debugging the current state of the module
+	assign dbg_state = current_state;
 
 	// Controls the central state machine
 	always @(*)
 	begin
+		current_state_next = current_state;
 		if (~s00_axis_aresetn) begin
 			current_state_next = DATA_IN;
 		end else begin
